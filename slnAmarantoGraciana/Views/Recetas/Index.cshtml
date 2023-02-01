@@ -1,0 +1,75 @@
+﻿@model IEnumerable<SistemaWebMisRecetas.Models.Receta>
+
+
+@{
+    ViewData["Title"] = "Recetas";
+}
+
+    @Html.ActionLink("Nuevo", "Create", "Recetas")
+
+    <table class="Receta">
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.Titulo)</th>
+            <th>@Html.DisplayNameFor(model => model.Categoria)</th>
+            <th>@Html.DisplayNameFor(model => model.Ingredientes)</th>
+            <th>@Html.DisplayNameFor(model => model.Instrucciones)</th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Titulo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Categoria)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Ingredientes)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Instrucciones)
+                </td>
+            </tr>
+        }
+    </table>
+
+    <table class="Autor" >
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.Nombre)</th>
+            <th>@Html.DisplayNameFor(model => model.Apellido)</th>
+            <th>@Html.DisplayNameFor(model => model.Edad)</th>
+            <th>@Html.DisplayNameFor(model => model.Email)</th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Apellido)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Edad)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                @Html.ActionLink(item.Titulo,"Details","Recetas",new{id=item.Id })
+            </tr>
+        }
+    </table>
+
+@Html.ActionLink("Volver al Index", "Index", "Home")
+
+@section SideBarOpcional{
+              
+        <ul>
+            <li>
+                @Html.ActionLink("Nueva receta", "Create", "Recetas")
+            </li>
+            <li>
+                @Html.ActionLink("Filtrar por Apellido", "DetailsByApellido", "Recetas")
+            </li>
+        </ul>
+    }

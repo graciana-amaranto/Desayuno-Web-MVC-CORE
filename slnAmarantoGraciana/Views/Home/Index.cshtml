@@ -1,0 +1,62 @@
+﻿
+@{
+    ViewData["Title"] = "Home";
+}
+<div class="main">
+    <header>
+        Mis Recetas
+    </header>
+
+    <div class="parrafos">
+        <p>
+            <h1>Sobre el desayuno</h1>
+            El desayuno es la primera comida que se consume en el día. El nombre deriva
+            del hecho de que uno no come mientras duerme, por lo que al levantarse
+            se encuentra en ayunas, rompiéndose ese ayuno al tomar esta comida.
+        </p>
+
+        <p>
+            <h2>Su importancia</h2>
+            El desayuno es la comida fundamental del día, ya que consumirlo o no,
+            nos afecta de forma notable a corto y a largo plazo.
+            Se ha demostrado que los niños que no desayunan o que solo toman un vaso de leche, rinden
+            menos en el colegio que los que ingieren un desayuno adecuado.
+
+            Estudios recientes afirman que el desayunar ayuda a acelerar el metabolismo,
+            lo cual es un factor beneficioso para prevenir la obesidad.
+        </p>
+        <p>
+            Nuestra especialidad, el desayuno americano, está compuesto por huevos, ya sean fritos o revueltos,
+            bacon y tortitas americanas. Como bebida, suele optarse por el café o zumos de frutas y en ocasiones,
+            en algunos hoteles y restaurantes se complementa con patatas fritas.
+        </p>
+    </div>
+
+
+<nav>
+    <h2>Recetas</h2>
+    @Html.ActionLink("Ver recetas","Index", "Recetas")
+    
+</nav>
+
+@section SideBarOpcional{
+    @ViewBag.Bienvenida
+    <ul class="listaimagenes">
+        <li>
+            <img src="~/css/img1.jpg"
+             width="200"
+             height="200">
+        </li>
+        <li>
+            <img src="~/css/img2.jpg"
+             width="200"
+             height="200">
+        </li>
+        <li>
+            <img src="~/css/img3.jpg"
+             width="200"
+             height="200">
+        </li>
+    </ul>
+    }
+</div>

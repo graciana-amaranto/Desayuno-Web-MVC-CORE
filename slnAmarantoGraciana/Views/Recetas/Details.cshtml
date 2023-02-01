@@ -1,0 +1,36 @@
+﻿@model SistemaWebMisRecetas.Models.Receta
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+ <h2>Detalle de la receta</h2>
+@Html.ActionLink("Volver a index", "Index", "Recetas")
+    <p>
+        @Html.DisplayNameFor(model => model.Titulo)
+        @Html.DisplayFor(model => model.Titulo)
+    </p>
+    <p>
+    @Html.DisplayNameFor(model => model.Categoria)
+    @Html.DisplayFor(model => model.Categoria)
+    </p>
+    <p>
+    @Html.DisplayNameFor(model => model.Ingredientes)
+    @Html.DisplayFor(model => model.Ingredientes)
+    </p>
+    <p>
+    @Html.DisplayNameFor(model => model.Instrucciones)
+    @Html.DisplayFor(model => model.Instrucciones)
+    </p>
+
+@section SideBarOpcional{
+
+            <ul>
+                <li>
+            @Html.ActionLink("Nueva receta", "Create", "Recetas")
+                </li>
+                <li>
+            @Html.ActionLink("Recetas", "Index", "Recetas")
+                </li>
+            </ul>
+    }
