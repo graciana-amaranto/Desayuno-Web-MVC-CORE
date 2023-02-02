@@ -2,10 +2,16 @@
 @{
     ViewData["Title"] = "Home";
 }
-<div class="main">
+<div class="maincontent">
     <header>
         Mis Recetas
     </header>
+
+    <nav>
+        <h2>Recetas</h2>
+        @Html.ActionLink("Ver recetas","Index", "Recetas")
+
+    </nav>
 
     <div class="parrafos">
         <p>
@@ -32,31 +38,28 @@
         </p>
     </div>
 
-
-<nav>
-    <h2>Recetas</h2>
-    @Html.ActionLink("Ver recetas","Index", "Recetas")
+    @section SideBarOpcional{
+        <div class="container">
+            @ViewBag.Bienvenida
     
-</nav>
-
-@section SideBarOpcional{
-    @ViewBag.Bienvenida
-    <ul class="listaimagenes">
-        <li>
-            <img src="~/css/img1.jpg"
-             width="200"
-             height="200">
-        </li>
-        <li>
-            <img src="~/css/img2.jpg"
-             width="200"
-             height="200">
-        </li>
-        <li>
-            <img src="~/css/img3.jpg"
-             width="200"
-             height="200">
-        </li>
-    </ul>
-    }
+            <ul class="listaimagenes">
+                <li>
+                    <img src="~/css/img1.jpg"
+                     width="200"
+                     height="200">
+                </li>
+                <li>
+                    <img src="~/css/img2.jpg"
+                     width="200"
+                     height="200">
+                </li>
+                <li>
+                    <img src="~/css/img3.jpg"
+                     width="200"
+                     height="200">
+                </li>
+            </ul>
+        </div>
+  
+     }
 </div>

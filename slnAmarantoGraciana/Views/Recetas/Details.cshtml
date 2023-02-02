@@ -5,7 +5,6 @@
 }
 
  <h2>Detalle de la receta</h2>
-@Html.ActionLink("Volver a index", "Index", "Recetas")
     <p>
         @Html.DisplayNameFor(model => model.Titulo)
         @Html.DisplayFor(model => model.Titulo)
@@ -24,13 +23,17 @@
     </p>
 
 @section SideBarOpcional{
-
+    <div class="container">
             <ul>
                 <li>
-            @Html.ActionLink("Nueva receta", "Create", "Recetas")
+                    @Html.ActionLink("Nueva receta", "Create", "Recetas")
                 </li>
                 <li>
-            @Html.ActionLink("Recetas", "Index", "Recetas")
+                     @Html.ActionLink("Recetas", "Index", "Recetas")
+                </li>
+                <li>
+                    @Html.ActionLink("Volver a Home", "Index", "Home")
                 </li>
             </ul>
+    </div>
     }

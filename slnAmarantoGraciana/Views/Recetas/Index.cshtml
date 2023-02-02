@@ -5,10 +5,10 @@
     ViewData["Title"] = "Recetas";
 }
 
-    @Html.ActionLink("Nuevo", "Create", "Recetas")
 
     <table class="Receta">
         <tr>
+        <th>@Html.DisplayNameFor(model => model.Id)</th>
             <th>@Html.DisplayNameFor(model => model.Titulo)</th>
             <th>@Html.DisplayNameFor(model => model.Categoria)</th>
             <th>@Html.DisplayNameFor(model => model.Ingredientes)</th>
@@ -17,8 +17,11 @@
         @foreach (var item in Model)
         {
             <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Titulo)
+                    @Html.ActionLink($"{item.Titulo}", "Details", "Recetas", new {title = item.Titulo})
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Categoria)
@@ -55,21 +58,23 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.Email)
                 </td>
-                @Html.ActionLink(item.Titulo,"Details","Recetas",new{id=item.Id })
+                <td>
+                    @Html.ActionLink("Editar", "Edit", "Recetas", new {id = item.Id})
+                </td>
             </tr>
         }
     </table>
 
-@Html.ActionLink("Volver al Index", "Index", "Home")
 
 @section SideBarOpcional{
-              
-        <ul>
-            <li>
-                @Html.ActionLink("Nueva receta", "Create", "Recetas")
-            </li>
-            <li>
-                @Html.ActionLink("Filtrar por Apellido", "DetailsByApellido", "Recetas")
-            </li>
-        </ul>
+        <div class="container">
+            <ul>
+                <li>
+                    @Html.ActionLink("Nueva receta", "Create", "Recetas")
+                </li>
+                <li>
+                    @Html.ActionLink("Volver a Home", "Index", "Home")
+                </li>
+            </ul>
+        </div>
     }

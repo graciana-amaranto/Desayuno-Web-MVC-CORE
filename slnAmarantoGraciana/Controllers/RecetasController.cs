@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using SistemaWebMisRecetas.Data;
 using SistemaWebMisRecetas.Models;
 
@@ -46,35 +47,40 @@ namespace SistemaWebMisRecetas.Controllers
 
         //detalle de una receta
         [HttpGet]
-        public ActionResult Details(int id)
+        public ActionResult Details(string title)
         {
-            Receta receta = TraerUna(id);
+            var receta = (from i in context.Recetas
+                          where title == i.Titulo
+                          select i).FirstOrDefault();
+
             if (receta == null)
-            {
                 return NotFound();
-            }
             else
-            {
                 return View("Details", receta);
-            }
         }
 
-        private Receta TraerUna(int id)
+        [HttpGet]
+        public ActionResult Edit(int id)
+        {
+            var receta = TraerUno(id);
+            return View("Edit", receta);
+        }
+
+        [HttpPost]
+        [ActionName("Edit")]
+        public ActionResult EditConfirmed(Receta receta)
+        {
+            if (!ModelState.IsValid) return BadRequest();
+
+            context.Entry(receta).State = EntityState.Modified;
+            context.SaveChanges();
+
+            return RedirectToAction("Index");
+        }
+
+        private Receta TraerUno(int id)
         {
             return context.Recetas.Find(id);
         }
-
-        //filtrar por nombre y apellido
-        [HttpGet]
-        public IActionResult DetailsByApellido(string apellido)
-        {
-            var recetas = context.Recetas.Where(i => i.Apellido == apellido).ToList();
-
-            if (recetas == null)
-                return NotFound();
-
-            return View("DetailsByApellido", recetas);
-        }
-
     }
 }

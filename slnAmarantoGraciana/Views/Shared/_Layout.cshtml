@@ -4,23 +4,20 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - slnAmarantoGraciana</title>
-    <link rel="stylesheet" href="~/css/main.css" />
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    
-</head>
+    <link href="~/css/main.css" rel="stylesheet" type="text/css" />
+    </head>
 <body>
-    <div id="sidebar">
-        @if (IsSectionDefined("SideBarOpcional"))
-        {
-            @RenderSection("SideBarOpcional")
-        }
-    </div>
-   
-    <div class="container">
-        <main role="main" class="pb-3">
+    
+    <section>
+        <main>
             @RenderBody()
         </main>
-    </div>
+    </section>
+
+    <aside id="sidebar">
+        @RenderSection("SideBarOpcional", required : false)
+    </aside>
+
 
     <footer class="border-top footer text-muted">
         <div class="container">

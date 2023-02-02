@@ -52,10 +52,20 @@
     @Html.ActionLink("Volver al Index", "Index", "Recetas")
 }
 @section SideBarOpcional{
-
-       <li>
-        @Html.ActionLink("Filtrar por Apellido", "DetailsByApellido", "Recetas")
-       </li>
+    <div class="container">
+        <ul>
+          
+                <li>
+                    @Html.ActionLink("Nueva receta", "Create", "Recetas")
+                </li>
+                <li>
+                     @Html.ActionLink("Recetas", "Index", "Recetas")
+                </li>
+                <li>
+                    @Html.ActionLink("Volver a Home", "Index", "Home")
+                </li>
+        </ul>
+    </div>
             
     }
 
